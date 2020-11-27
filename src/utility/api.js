@@ -1,5 +1,5 @@
 const faker = require('faker');
-const fs = require('fs')
+
 
 function generateVehicle() {
     let vehicles = []
@@ -27,4 +27,4 @@ function generateVehicle() {
 
 let dataObj = generateVehicle();
 
-fs.writeFileSync('data.json', JSON.stringify(dataObj, null, '\t'));
+
