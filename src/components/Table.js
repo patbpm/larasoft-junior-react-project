@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import '../App.css';
  
 class Table extends Component {
+
+
   render() {
       
     return (
@@ -10,18 +13,8 @@ class Table extends Component {
             
             <table >
                 <tbody>
-                    <tr >
-                        <td>{ this.props.meta.id }</td>
-                        <td>{ this.props.meta.manufacturer }</td>
-                        <td>{ this.props.meta.model }</td>
-                        <td>{ this.props.meta.type }</td>
-                        <td>{ this.props.meta.fuel }</td>
-                        <td>{ this.props.meta.colour }</td>
-                        <td>{ this.props.meta.mileage }</td>
-                        <td>{ this.props.meta.tyres }</td>
-                        <td>{ this.props.meta.registration }</td>
-                        
-                    </tr>
+                <tr>{this.props.header}</tr>
+                {this.props.data}
                 </tbody>
             </table>
                 

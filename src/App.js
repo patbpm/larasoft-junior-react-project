@@ -7,8 +7,8 @@ import Table from './components/Table';
 import data from './utility/data';
 
 class App extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
    
     this.state = {
@@ -17,6 +17,32 @@ class App extends Component {
 
     
   }
+
+  displayTableData() {
+    return this.state.data.map((data) => {
+      const { id, manufacturer , model, type, fuel, colour, mileage, tyres , registration } = data
+      return (
+          <tr key={id}>
+              <td>{id}</td>
+              <td>{manufacturer}</td>
+              <td>{model}</td>
+              <td>{type}</td>
+              <td>{fuel}</td>
+              <td>{colour}</td>
+              <td>{mileage}</td>
+              <td>{tyres }</td>
+              <td>{registration}</td>
+          </tr>
+      ) 
+    })
+  }
+
+  displayTableHeader() {
+    let header = Object.keys(this.state.data[0])
+    return header.map((key, index) => {
+       return <th key={index}>{key.toUpperCase()}</th>
+    })
+ }
   render(){
     return (
       <div className="App">
@@ -25,14 +51,10 @@ class App extends Component {
           <p>
             Please see below the table of All Vehicles!
           </p>
-          <div >
-          {
-            Object
-            .keys(this.state.data)
-            .map(key => <Table key={key} meta={this.state.data[key]} />)
-          }
-            
-          </div>
+          <Table 
+              header = {this.displayTableHeader()}
+              data = {this.displayTableData()} />
+          
       </div>
     );
   }
