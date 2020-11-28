@@ -11,12 +11,26 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-   
+    const datalist = data.data
     this.state = {
-      data: data.data
+      data: datalist
     };
 
-    
+    this.filterData = this.filterData.bind(this);
+
+
+  }
+  
+
+  filterByValue(data, filterWord) {
+    return data.filter(o =>
+        Object.keys(o).some(k => o[k].toLowerCase().includes(filterWord.toLowerCase())));
+  }
+
+  filterData(filterWord, filterBy) {
+    data.then(data => {
+      this.setState({data: data});
+    });
   }
 
   displayTableData() {
@@ -49,7 +63,7 @@ class App extends Component {
       <div className="App">
           <Header />
           
-          <FilterList />
+          <FilterList filterData={this.filterData}/>
           
           <p>
             Please see below the table of All Vehicles!
