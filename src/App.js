@@ -20,17 +20,14 @@ class App extends Component {
 
 
   }
-  
 
-  filterByValue(data, filterWord) {
-    return data.filter(o =>
-        Object.keys(o).some(k => o[k].toLowerCase().includes(filterWord.toLowerCase())));
-  }
+
 
   filterData(filterWord, filterBy) {
-    data.then(data => {
-      this.setState({data: data});
-    });
+    let filtered = this.state.data.filter(vehicle => vehicle[filterBy].toLowerCase().includes(filterWord.toLowerCase()));
+      
+    this.setState({ data: filtered});
+    
   }
 
   displayTableData() {
