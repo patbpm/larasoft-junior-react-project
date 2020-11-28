@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Header from './components/Header';
 import Table from './components/Table';
+import FilterList from './components/FilterList';
 import data from './utility/data';
 
 class App extends Component {
@@ -47,6 +48,8 @@ class App extends Component {
     return (
       <div className="App">
           <Header />
+          
+          <FilterList />
           
           <p>
             Please see below the table of All Vehicles!
